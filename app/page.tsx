@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Button } from "@heroui/button";
 
 export default function Home() {
   return (
@@ -21,12 +22,13 @@ export default function Home() {
         @ninabeauty.cosmeticos
       </a>
       <a
-        className="p-4 bg-primary rounded-2xl"
         href="https://shopee.com.br/ninabeauty.cosmeticos"
         target="_blank"
         rel="noopener noreferrer"
       >
-        Lista de Produtos na Shopee
+        <Button color="primary" size="lg" radius="sm">
+          Lista de Produtos na Shopee
+        </Button>
       </a>
     </main>
   );
