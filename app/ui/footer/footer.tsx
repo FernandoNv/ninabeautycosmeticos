@@ -9,7 +9,7 @@ export default function Footer() {
           <Link href={"/"}>
             <Image
               className="border-2 border-pink-500"
-              src="/nina-logo-small.png"
+              src="/nina-logo.png"
               alt="Logo Nina Beauty Cosméticos"
               width={150}
               height={150}

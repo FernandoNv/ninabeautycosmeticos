@@ -90,7 +90,7 @@ export default function Header() {
           <NavbarBrand>
             <Link href={"/"}>
               <Image
-                src="/nina-logo-small.png"
+                src="/nina-logo.png"
                 alt="Logo Nina Beauty Cosméticos"
                 width={150}
                 height={150}
