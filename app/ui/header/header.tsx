@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Navbar,
   NavbarBrand,
@@ -11,7 +12,6 @@ import {
   Dropdown,
   DropdownItem,
   DropdownTrigger,
-  Avatar,
   Input,
 } from "@heroui/react";
 import { Bars3Icon } from "@heroicons/react/24/outline";
@@ -74,6 +74,9 @@ export default function Header() {
         shouldHideOnScroll
         isMenuOpen={isMenuOpen}
         onMenuOpenChange={setIsMenuOpen}
+        height={150}
+        isBlurred={false}
+        className="sm:border-b-2 sm:border-pink-600"
       >
         <NavbarContent className="sm:hidden" justify="start">
           <NavbarMenuToggle
@@ -85,12 +88,14 @@ export default function Header() {
 
         <NavbarContent justify="center">
           <NavbarBrand>
-            <Image
-              src="/nina-logo.png"
-              alt="Logo Nina Beauty Cosméticos"
-              width={60}
-              height={60}
-            ></Image>
+            <Link href={"/"}>
+              <Image
+                src="/nina-logo-small.png"
+                alt="Logo Nina Beauty Cosméticos"
+                width={150}
+                height={150}
+              ></Image>
+            </Link>
           </NavbarBrand>
           <NavbarContent className="hidden sm:flex gap-3">
             {menuItems.map((menuItem) => (
@@ -119,18 +124,23 @@ export default function Header() {
           />
           <Dropdown placement="bottom-end">
             <DropdownTrigger>
-              <Avatar
-                isBordered
-                as="button"
-                className="transition-transform"
-                size="sm"
-                color="secondary"
-                name="Fernando Vieira"
-                src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-              />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="size-9"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                />
+              </svg>
             </DropdownTrigger>
             <DropdownMenu aria-label="Profile Actions" variant="flat">
-              <DropdownItem key="profile" className="h-14 gap-2">
+              {/* <DropdownItem key="profile" className="h-14 gap-2">
                 <p className="font-semibold">Signed in as</p>
                 <p className="font-semibold">zoey@example.com</p>
               </DropdownItem>
@@ -144,7 +154,8 @@ export default function Header() {
               </DropdownItem>
               <DropdownItem key="logout" color="danger">
                 Log Out
-              </DropdownItem>
+              </DropdownItem> */}
+              <DropdownItem key="inicio">Inicio</DropdownItem>
             </DropdownMenu>
           </Dropdown>
         </NavbarContent>
@@ -163,7 +174,7 @@ export default function Header() {
           ))}
         </NavbarMenu>
       </Navbar>
-      <div className="sm:hidden p-2">
+      <div className="sm:hidden p-2 pr-3 border-b-2 border-pink-600">
         <Input
           classNames={{
             base: "w-full h-10",

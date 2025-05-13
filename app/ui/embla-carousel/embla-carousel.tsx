@@ -18,6 +18,7 @@ import Image from "next/image";
 export type SlideHomeItem = {
   title: string;
   subtitle: string;
+  text?: string;
   image: string;
   url: string;
 };
@@ -53,17 +54,19 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
   } = usePrevNextButtons(emblaApi, onNavButtonClick);
 
   return (
-    <section className="embla relative w-full h-full">
+    <section className="embla relative w-full h-full bg-[rgba(247,106,192,0.45)]">
       <div className="embla__viewport w-full h-[60dvh]" ref={emblaRef}>
         <div className="embla__container w-full h-full">
           {slides.map((banner) => (
             <Link
               className="embla__slide w-full h-full"
               href={banner.url}
+              target="_blank"
               key={banner.title}
             >
               <div className="w-full h-full relative">
                 <Image
+                  className=""
                   src={banner.image}
                   alt={banner.title}
                   layout="fill"
@@ -71,12 +74,19 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                   quality={100}
                 />
 
-                <div className="p-2 z-10 absolute top-1/4 left-1/4 w-1/2 h-1/2 outline-2 outline-[var(--primary-dark)] bg-[rgba(247,106,192,0.45)] flex flex-col items-center justify-center">
-                  <h2 className="p-2 text-4xl font-extrabold text-[var(--primary-dark)]">
+                <div className="p-2 z-10 absolute w-full h-full lg:top-2/12 lg:left-1/4 lg:w-1/2 lg:h-2/3 outline-2 outline-[var(--primary-dark)] backdrop-brightness-70 flex flex-col items-center justify-center">
+                  <h2 className="p-2 text-4xl lg:text-5xl font-extrabold text-center text-white">
                     {banner.title}
                   </h2>
-                  <h3 className="p-2 text-2xl text-white">{banner.subtitle}</h3>
-                  <Button className="mt-4 btn-primary">Acessar</Button>
+                  <h3 className="p-2 text-2xl lg:text-3xl text-center text-white">
+                    {banner.subtitle}
+                  </h3>
+                  <p className="p-2 text-xl lg:text-2xl text-white text-center">
+                    {banner.text}
+                  </p>
+                  <Button size="lg" className="mt-4 btn-primary">
+                    acessar
+                  </Button>
                 </div>
               </div>
             </Link>
@@ -84,7 +94,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
         </div>
       </div>
 
-      <div className="embla__controls absolute bottom-0 left-0 bg-[rgba(0,0,0,0.2)]">
+      <div className="embla__controls absolute bottom-0 left-0 backdrop-brightness-70">
         <div className="embla__buttons">
           <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
           <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
