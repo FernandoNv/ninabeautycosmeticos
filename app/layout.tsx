@@ -25,7 +25,15 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`
+          ${geistSans.variable} 
+          ${geistMono.variable} 
+          antialiased light 
+          [&::-webkit-scrollbar]:w-2
+  [&::-webkit-scrollbar-track]:bg-pink-100
+  [&::-webkit-scrollbar-thumb]:bg-pink-300
+  dark:[&::-webkit-scrollbar-track]:bg-pink-700
+  dark:[&::-webkit-scrollbar-thumb]:bg-pink-500`}
       >
         {children}
       </body>
